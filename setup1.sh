@@ -11,4 +11,21 @@ sed -i 's/#HandleLidClosewhatwver/HandleLidCloseignore' /etc/systems/logind.conf
 
 
 #backup netplan file and create new one with correct data
-mv /etc/netplan/neplangggg.conf netplanggg.conf.bak
+mv /etc/netplan/neplangggg.yaml netplanggg.yaml.bak
+#create new netplan file
+cat > /etc/netplan/01-netcfg.yaml <<EOF
+network:
+  version: 2
+  ethernets:
+    $nic
+      dhcp4: true
+      optional:true
+    $wifi
+      dhcp4: true
+      optional: true
+      access-points:
+        "green":
+          password: "$wifipassword"
+EOF
+sudo netplan apply
+reboot now
