@@ -1,4 +1,10 @@
 #!/bin/bash
+#set variables
+read -p "Enter the name for the NIC adapter " nic
+read -p "Enter the name for the WiFi adapter " wifi
+read -p "Enter the WiFi password: " wifipass
+
+#install unzip and wpa_supplicant, start and enable wpa_supplicant
 apt install unzip wpasupplicant
 systemctl start wpa_supplicant
 systemctl enable wpa_supplicant
@@ -8,6 +14,7 @@ sed -i 's/#HandleLidClosewhatwver/HandleLidCloseignore' /etc/systems/logind.conf
 
 #add line to sshd conf for root login
 
+#remove all of cloud-init
 
 
 #backup netplan file and create new one with correct data
@@ -25,7 +32,9 @@ network:
       optional: true
       access-points:
         "green":
-          password: "$wifipassword"
+          password: "$wifipass"
 EOF
 sudo netplan apply
+
+#reboot system
 reboot now
