@@ -31,7 +31,7 @@ network:
   ethernets:
     $nic:
       dhcp4: true
-      optional:true
+      optional: true
     $wifi:
       dhcp4: true
       optional: true
