@@ -5,7 +5,7 @@ read -p "Enter the name for the WiFi adapter " wifi
 read -p "Enter the WiFi password: " wifipass
 
 #install unzip and wpa_supplicant, start and enable wpa_supplicant
-apt install unzip wpasupplicant -y
+apt install unzip wpasupplicant lm-sensors -y
 systemctl start wpa_supplicant
 systemctl enable wpa_supplicant
 
