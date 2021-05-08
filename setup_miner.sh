@@ -1,10 +1,16 @@
 #!/bin/bash
+#set name for display at herominers
+read -p "Enter the name for system " name
+
 #download xlarig miner
 wget https://github.com/scala-network/XLArig/releases/download/v5.2.2/XLArig-v5.2.2-linux-x86_64.zip -P xlarig/
+
 #unzip xlarig
 unzip /home/administrator/xlarig/XLArig-v5.2.2-linux-x86_64.zip
+
 #remove xlarig zip file
 rm XLArig-v5.2.2-linux-x86_64.zip
+
 #create config.json
 cat > /etc/netplan/00-installer-config.yaml <<EOF
 {
@@ -57,3 +63,28 @@ cat > /etc/netplan/00-installer-config.yaml <<EOF
    "bench-algo-time":10
 }
 EOF
+
+#create xlarig service
+cat > /etc/systemd/system/xlarig.service <<EOF
+[Unit]
+Description=XLArig Scala Miner
+After=network.target
+
+[Service]
+User=root
+Group=root
+
+StandardOutput=journal
+StandardError=journal
+
+ExecStart=/home/administrator/xlarig/xlarig
+
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+#enable xlarig service and reboot
+systemctl enable xlarig
+reboot now
