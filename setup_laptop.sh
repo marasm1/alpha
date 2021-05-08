@@ -29,10 +29,10 @@ cat > /etc/netplan/00-installer-config.yaml <<EOF
 network:
   version: 2
   ethernets:
-    $nic
+    $nic:
       dhcp4: true
       optional:true
-    $wifi
+    $wifi:
       dhcp4: true
       optional: true
       access-points:
