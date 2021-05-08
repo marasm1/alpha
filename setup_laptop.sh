@@ -20,7 +20,7 @@ sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd
 #remove all of cloud-init
 echo 'datasource_list: [ None ]' | sudo -s tee /etc/cloud/cloud.cfg.d/90_dpkg.cfg
 apt purge cloud-init
-rm -rf /etc/cloud/ && sudo rm -rf /var/lib/cloud/
+rm -rf /etc/cloud/ && rm -rf /var/lib/cloud/
 
 #backup netplan file and create new one with correct network data
 mv /etc/netplan/00-installer-config.yaml /etc/netplan/00-installer-config.yaml.bak
