@@ -10,9 +10,9 @@ systemctl start wpa_supplicant
 systemctl enable wpa_supplicant
 
 #change settings so laptop lid does not turn off or sleep laptop
-sed -i 's/#HandleLidSwitch=whatever/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
-sed -i 's/#HandleLidSwitchExternalPower=whatever/HandleLidSitchExternalPower=ignore/' /etc/systemd/logind.conf
-sed -i 's/#HandleLidSwitchDocked=whatwver/HandleLidSwitchDocked=ignore/' /etc/systemd/logind.conf
+sed -i 's/#HandleLidSwitch=suspend/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
+sed -i 's/#HandleLidSwitchExternalPower=suspend/HandleLidSitchExternalPower=ignore/' /etc/systemd/logind.conf
+sed -i 's/#HandleLidSwitchDocked=ignore/HandleLidSwitchDocked=ignore/' /etc/systemd/logind.conf
 
 #add line to sshd conf for root login
 sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
