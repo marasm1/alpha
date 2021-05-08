@@ -3,7 +3,7 @@
 read -p "Enter the name for system " name
 
 #download xlarig miner
-wget https://github.com/scala-network/XLArig/releases/download/v5.2.2/XLArig-v5.2.2-linux-x86_64.zip -P xlarig/
+wget https://github.com/scala-network/XLArig/releases/download/v5.2.2/XLArig-v5.2.2-linux-x86_64.zip -P /home/administrator/xlarig/
 
 #unzip xlarig
 unzip /home/administrator/xlarig/XLArig-v5.2.2-linux-x86_64.zip
