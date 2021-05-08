@@ -9,10 +9,10 @@ wget https://github.com/scala-network/XLArig/releases/download/v5.2.2/XLArig-v5.
 unzip /home/administrator/xlarig/XLArig-v5.2.2-linux-x86_64.zip
 
 #remove xlarig zip file
-rm XLArig-v5.2.2-linux-x86_64.zip
+rm /home/administrator/xlarig/XLArig-v5.2.2-linux-x86_64.zip
 
 #create config.json
-cat > /etc/netplan/00-installer-config.yaml <<EOF
+cat > /home/administrator/xlarig/config.json<<EOF
 {
    "api":{
       "id":null,
