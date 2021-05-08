@@ -16,14 +16,15 @@ sed -i 's/#HandleLidSwitchDocked=whatwver/HandleLidSwitchDocked=ignore' /etc/sys
 
 
 #add line to sshd conf for root login
+sed -i 's/#PermitRootLogin prohibit-password /PermitRootLogin yes' /etc/ssh/sshd_config
 
 #remove all of cloud-init
 
 
 #backup netplan file and create new one with correct data
-mv /etc/netplan/neplangggg.yaml netplanggg.yaml.bak
+mv /etc/netplan/00-installer-config.yaml /etc/netplan/00-installer-config.yaml.bak
 #create new netplan file
-cat > /etc/netplan/01-netcfg.yaml <<EOF
+cat > /etc/netplan/00-installer-config.yaml <<EOF
 network:
   version: 2
   ethernets:
