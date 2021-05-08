@@ -3,8 +3,9 @@
 read -p "Enter the name for the NIC adapter " nic
 read -p "Enter the name for the WiFi adapter " wifi
 read -p "Enter the WiFi password: " wifipass
+
 #install unzip and wpa_supplicant, start and enable wpa_supplicant
-apt install unzip wpasupplicant
+apt install unzip wpasupplicant -y
 systemctl start wpa_supplicant
 systemctl enable wpa_supplicant
 
@@ -18,7 +19,7 @@ sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd
 
 #remove all of cloud-init
 echo 'datasource_list: [ None ]' | sudo -s tee /etc/cloud/cloud.cfg.d/90_dpkg.cfg
-apt purge cloud-init
+apt purge cloud-init -y
 rm -rf /etc/cloud/ && rm -rf /var/lib/cloud/
 
 #backup netplan file and create new one with correct network data
