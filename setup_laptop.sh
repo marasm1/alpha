@@ -9,19 +9,20 @@ apt install unzip wpasupplicant
 systemctl start wpa_supplicant
 systemctl enable wpa_supplicant
 
-#modify following for correct names and locations, add other ones
-sed -i 's/#HandleLidSwitch=whatever/HandleLidSwitch=ignore' /etc/systemd/logind.conf
-sed -i 's/#HandleLidSwitchExternalPower=whatever/HandleLidSitchExternalPower=ignore' /etc/systemd/logind.conf
-sed -i 's/#HandleLidSwitchDocked=whatwver/HandleLidSwitchDocked=ignore' /etc/systemd/logind.conf
-
+#change settings so laptop lid does not turn off or sleep laptop
+sed -i 's/#HandleLidSwitch=whatever/HandleLidSwitch=ignore/' /etc/systemd/logind.conf
+sed -i 's/#HandleLidSwitchExternalPower=whatever/HandleLidSitchExternalPower=ignore/' /etc/systemd/logind.conf
+sed -i 's/#HandleLidSwitchDocked=whatwver/HandleLidSwitchDocked=ignore/' /etc/systemd/logind.conf
 
 #add line to sshd conf for root login
-sed -i 's/#PermitRootLogin prohibit-password /PermitRootLogin yes' /etc/ssh/sshd_config
+sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 
 #remove all of cloud-init
+echo 'datasource_list: [ None ]' | sudo -s tee /etc/cloud/cloud.cfg.d/90_dpkg.cfg
+apt purge cloud-init
+rm -rf /etc/cloud/ && sudo rm -rf /var/lib/cloud/
 
-
-#backup netplan file and create new one with correct data
+#backup netplan file and create new one with correct network data
 mv /etc/netplan/00-installer-config.yaml /etc/netplan/00-installer-config.yaml.bak
 #create new netplan file
 cat > /etc/netplan/00-installer-config.yaml <<EOF
