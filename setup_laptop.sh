@@ -3,7 +3,6 @@
 read -p "Enter the name for the NIC adapter " nic
 read -p "Enter the name for the WiFi adapter " wifi
 read -p "Enter the WiFi password: " wifipass
-
 #install unzip and wpa_supplicant, start and enable wpa_supplicant
 apt install unzip wpasupplicant
 systemctl start wpa_supplicant
