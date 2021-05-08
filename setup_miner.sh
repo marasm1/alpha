@@ -12,7 +12,7 @@ unzip /home/administrator/xlarig/XLArig-v5.2.2-linux-x86_64.zip
 rm /home/administrator/xlarig/XLArig-v5.2.2-linux-x86_64.zip
 
 #create config.json
-cat > /home/administrator/xlarig/config.json<<EOF
+cat > /home/administrator/xlarig/config.json <<EOF
 {
    "api":{
       "id":null,
