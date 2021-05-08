@@ -32,6 +32,7 @@ network:
     $nic:
       dhcp4: true
       optional: true
+  wifis:
     $wifi:
       dhcp4: true
       optional: true
