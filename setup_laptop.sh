@@ -10,7 +10,10 @@ systemctl start wpa_supplicant
 systemctl enable wpa_supplicant
 
 #modify following for correct names and locations, add other ones
-sed -i 's/#HandleLidClosewhatwver/HandleLidCloseignore' /etc/systems/logind.conf
+sed -i 's/#HandleLidSwitch=whatever/HandleLidSwitch=ignore' /etc/systemd/logind.conf
+sed -i 's/#HandleLidSwitchExternalPower=whatever/HandleLidSitchExternalPower=ignore' /etc/systemd/logind.conf
+sed -i 's/#HandleLidSwitchDocked=whatwver/HandleLidSwitchDocked=ignore' /etc/systemd/logind.conf
+
 
 #add line to sshd conf for root login
 
