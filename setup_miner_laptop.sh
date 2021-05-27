@@ -29,7 +29,6 @@ cat > /home/administrator/xlarig/config.json <<EOF
    "background":false,
    "colors":true,
    "randomx":{
-      "1gb-pages": true,
       "init":-1,
       "mode":"auto"
    },
